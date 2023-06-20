@@ -1,13 +1,34 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Start your test!</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <p>An error occured! Don't worry! You can go back :D<br></p>
-	<p>Go back <a href="/">here</a></p>
-	
-
-</body>
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Your Result</title>
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Inconsolata" />
+      <link th:href="@{/css/general.css}" rel="stylesheet" />
+   </head>
+   <body>
+      <div class="smooth">
+         <header>
+            <a href='/'><h3>Personalitest!</h3></a>
+         </header>
+         <div class="main">
+            <div>
+               <svg class="title">
+                  <text x="0" y="40" > Oh no! Is this an error?</text>
+               </svg>
+               <p class="lead">
+                  Don't worry! You can just go back and restart the quiz!                  
+               </p>
+            </div>
+            <form>
+               <a class="button" href="/" com > Go Back</a>
+            </form>
+         </div>
+         <footer id="bottom">
+            <div class="copy">
+               <p> © 2023 André Franco</p>
+            </div>
+         </footer>
+      </div>
+   </body>
 </html>
