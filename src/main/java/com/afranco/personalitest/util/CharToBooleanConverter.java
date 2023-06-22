@@ -3,6 +3,12 @@ package com.afranco.personalitest.util;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
+/***
+ * Converts Char ('Y' or 'N') and converts to boolean
+ * 
+ * @author André Franco
+ *
+ */
 @Converter(autoApply = true)
 public class CharToBooleanConverter implements AttributeConverter<Boolean, String> {
 

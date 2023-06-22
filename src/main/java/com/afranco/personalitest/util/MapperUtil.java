@@ -12,6 +12,13 @@ public class MapperUtil {
 
 	public MapperUtil() {}
 	
+	/***
+	 * Maps Question and Answer Entities to QuestionData
+	 * 
+	 * @param questionEntity question
+	 * @param answerEntityList list of answers
+	 * @return QuestionData containing all parameters
+	 */
 	public static QuestionData mapQuestionData(QuestionEntity questionEntity, List<AnswerEntity> answerEntityList) {
 		
 		List<AnswerData> answers = answerEntityList.stream().map(MapperUtil::mapAnswerData).collect(Collectors.toList());
@@ -24,6 +31,12 @@ public class MapperUtil {
 		return data;
 	}
 	
+	/***
+	 * Maps Answer Entities to AnswerData
+	 * 
+	 * @param entity answer entity
+	 * @return AnswerData 
+	 */
 	public static AnswerData mapAnswerData(AnswerEntity entity) {
 		
 		QuestionEntity questionEntity = entity.getQuestion();

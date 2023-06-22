@@ -14,6 +14,12 @@ import com.afranco.personalitest.repository.AnswerRepository;
 import com.afranco.personalitest.repository.QuestionRepository;
 import com.afranco.personalitest.util.MapperUtil;
 
+/***
+ * Main service for Personalitest
+ * 
+ * @author André Franco
+ *
+ */
 @Service
 public class DefaultPersonalitestService implements PersonalitestService {
 	

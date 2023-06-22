@@ -18,11 +18,24 @@ public class PersonalitestRestController {
 		this.personalitestService = personalitestService;
 	}
  
+	/***
+	 * Displays Personalitest Home Route
+	 * 
+	 * @returns template name
+	 */
 	@GetMapping
 	public String home() {
 		return "index";
 	}
 	
+	/***
+	 * Displays Personalitest Main Pages according to the answers.
+	 * 
+	 * @param answers test answers (Optional)
+	 * @param model  spring model
+	 * 
+	 * @returns template name
+	 */
 	@GetMapping("/personalitest")
 	public String personalitest(@RequestParam(name="answers", required=false) String answers, Model model) {
 		Map<String, Object> serviceResponse =  personalitestService.handleTest(answers);
@@ -31,7 +44,6 @@ public class PersonalitestRestController {
 		
 		return resolveTemplateByServiceMap(serviceResponse);
 	}
-	
 	
 	private String resolveTemplateByServiceMap(Map<String, Object> map) {
 		
