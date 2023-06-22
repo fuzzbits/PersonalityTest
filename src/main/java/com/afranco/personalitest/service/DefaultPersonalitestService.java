@@ -1,11 +1,11 @@
 package com.afranco.personalitest.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.afranco.personalitest.model.AnswerData;
 import com.afranco.personalitest.model.entity.AnswerEntity;
@@ -20,7 +20,7 @@ public class DefaultPersonalitestService implements PersonalitestService {
 	private AnswerRepository answerRepository;
 	
 	private QuestionRepository questionRepository;
-	
+	 
 	public DefaultPersonalitestService(AnswerRepository answerRepository, QuestionRepository questionRepository) {
 		this.answerRepository = answerRepository;
 		this.questionRepository = questionRepository;
@@ -28,28 +28,25 @@ public class DefaultPersonalitestService implements PersonalitestService {
 
 
 	@Override
-	public String handleTest(String answers, Model model) {
+	public Map<String, Object> handleTest(String answers) {
+		
+		Map<String, Object> response = new HashMap<>();
 		
 		int totalQuestions = countQuestions();
-		
  		int nextTestOrder = getNextQuestionTestOrder(answers);
 		
 		if(answers != null && answers.length()>totalQuestions) {
-			return "error";
-		}
-		
-		if(nextTestOrder<= totalQuestions) {
+			return response;
+		}else if(nextTestOrder<= totalQuestions) {
 			QuestionEntity nextQuestion =  getQuestionEntityByTestOrder(nextTestOrder);
 			List<AnswerEntity> answersEntity = getAnswerEntityById(nextQuestion.getId());
-			model.addAttribute("question", MapperUtil.mapQuestionData(nextQuestion, answersEntity));
-			return "personalitest";
+			response.put("question", MapperUtil.mapQuestionData(nextQuestion, answersEntity));
 		}else {
-			
 			double introvertPercentage = ((double)countIntrovertAnswers(answers)/totalQuestions*100);
-			
-			model.addAttribute("result", parsePercentageResult(introvertPercentage));
-			return "end_test";
+			response.put("result", parsePercentageResult(introvertPercentage));
 		}
+		
+		return response;
 		
 	}
 	

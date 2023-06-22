@@ -1,9 +1,9 @@
 package com.afranco.personalitest.service;
 
-import org.springframework.ui.Model;
+import java.util.Map;
 
 public interface PersonalitestService {
 
-	String handleTest(String answers, Model model);
+	Map<String, Object> handleTest(String answers);
 	
 }
